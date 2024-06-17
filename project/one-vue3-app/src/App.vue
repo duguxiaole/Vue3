@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>{{ message }}</h1>
+  <div id="app">
     <router-view />
   </div>
 
@@ -10,7 +9,7 @@
 export default {
   data() {
     return {
-      message: 'Hello, 我的第一个vue3 项目!'
+
     }
   },
   components: {
@@ -20,8 +19,11 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  color: blue;
-  text-align: center;
+#app {
+  height: 100%;
+  ;
+  margin: 10px;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
 }
 </style>

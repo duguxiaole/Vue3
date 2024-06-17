@@ -1,14 +1,24 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
 
-import BasicsHome from '@/pages/basics/home.vue'
+import Basics from './basics/index.js'
 
 const routes = [
-    {path: '/', component: BasicsHome},
-  { path: '/home', component: BasicsHome },
+    {
+        path: '/', 
+        redirect: '/workBench',
+    },
+    {
+        path: '/workBench', 
+        // 路由懒加载
+        component: ()=>import('@/pages/workbench.vue'),
+    },
+    {
+        ...Basics,
+    }
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory("/"),
   routes,
 })
 
