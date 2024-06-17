@@ -1,26 +1,27 @@
 <template>
   <div>
     <h1>{{ message }}</h1>
-    <hello-runoob></hello-runoob>
+
   </div>
+
 </template>
 
 <script>
-import HelloRunoob from './components/HelloRunoob.vue'
 export default {
   data() {
     return {
-      message: 'Hello, RUNOOB!'
+      message: 'Hello, 我的第一个vue3 项目!'
     }
   },
   components: {
-    HelloRunoob,
+
   }
 }
 </script>
 
 <style>
 h1 {
-  color: blue;
+  /* color: blue;
+  text-align: center; */
 }
 </style>
