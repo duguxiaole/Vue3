@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div>
         <h1>模版语法</h1>
         <div class="homeObj">
             <div class="coust_one"><el-input v-model="message" style="width: 240px" placeholder="Please input" /></div>
@@ -108,11 +108,6 @@ export default {
 </script>
 
 <style scoped>
-.main {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-}
 
 h1 {
     text-align: center;

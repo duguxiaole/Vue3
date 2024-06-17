@@ -2,6 +2,7 @@
     <div>
       <h1>{{ message }}</h1>
       <h2>欢迎来到工作台</h2>
+      
 
       <div>
         <el-button @click="handleToBasic">基础</el-button>
@@ -21,7 +22,7 @@ import { useRouter } from 'vue-router';
 
     const handleToBasic = () =>{
         router.push({
-            path: '/basics/home'
+            path: '/basics'
         })
     }
   

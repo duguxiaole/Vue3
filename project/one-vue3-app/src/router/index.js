@@ -12,9 +12,7 @@ const routes = [
         // 路由懒加载
         component: ()=>import('@/pages/workbench.vue'),
     },
-    {
-        ...Basics,
-    }
+    ...Basics,
 ]
 
 const router = createRouter({

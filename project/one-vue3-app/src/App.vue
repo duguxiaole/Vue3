@@ -1,29 +1,29 @@
 <template>
   <div id="app">
-    <router-view />
+    <!-- <router-view /> -->
+    <RouterView></RouterView>
+   
   </div>
 
 </template>
 
 <script>
+// import { RouterView } from 'vue-router';
 export default {
+  name : 'app',   
   data() {
     return {
 
     }
   },
-  components: {
-
-  }
 }
 </script>
 
 <style scoped>
 #app {
-  height: 100%;
-  ;
-  margin: 10px;
-  padding: 10px;
-  /* border: 1px solid #ccc; */
+  height: 100%;;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
 }
 </style>

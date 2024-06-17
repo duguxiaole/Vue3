@@ -6,7 +6,7 @@ export default [
         redirect:'/basics/home',
         children:[
             { 
-                path: '/home', 
+                path: 'home', 
                 component: ()=>import('@/pages/basics/home.vue')
              },
         ]
