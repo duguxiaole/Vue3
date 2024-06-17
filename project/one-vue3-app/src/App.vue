@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>{{ message }}</h1>
-
+    <main>
+      <RouterView />
+    </main>
   </div>
 
 </template>
@@ -21,7 +23,7 @@ export default {
 
 <style>
 h1 {
-  /* color: blue;
-  text-align: center; */
+  color: blue;
+  text-align: center;
 }
 </style>
