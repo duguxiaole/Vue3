@@ -1,9 +1,7 @@
 <template>
   <div>
     <h1>{{ message }}</h1>
-    <main>
-      <RouterView />
-    </main>
+    <router-view />
   </div>
 
 </template>

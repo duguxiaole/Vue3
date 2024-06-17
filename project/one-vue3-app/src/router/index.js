@@ -1,9 +1,10 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
 
-import BasicsNewFirst from '@/pages/basics/new-first.vue'
+import BasicsHome from '@/pages/basics/home.vue'
 
 const routes = [
-  { path: '/about', component: BasicsNewFirst },
+    {path: '/', component: BasicsHome},
+  { path: '/home', component: BasicsHome },
 ]
 
 const router = createRouter({
