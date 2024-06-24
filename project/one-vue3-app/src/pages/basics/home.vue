@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="main_sty">
         <h1>模版语法</h1>
         <div class="homeObj">
             <div class="coust_one"><el-input v-model="message" style="width: 240px" placeholder="Please input" /></div>
@@ -17,13 +17,39 @@
             <span class="count_sty_one" @click="handleSubtract"><el-button type="success">减</el-button></span>
             <span class="count_sty_one"><el-button type="info" @click="handleZero">归零</el-button></span>
         </div>
-        <hr>
 
         <h2>reactive用法</h2>
         <div>个人信息介绍</div>
         <p>我叫{{ personalObj.name }},性别：{{ personalObj.sex }}，年龄：{{ personalObj.age }}</p>
         <el-button @click="handleClick">修改信息</el-button>
-        <hr>
+    </div>
+
+    <div class="main_sty">
+        <h1>条件渲染/列表渲染</h1>
+        <el-button type="primary" @click="isShow = !isShow">天气变换</el-button>
+        <div v-if="isShow">今天是个好日子</div>
+        <div v-else> 下雨了</div>
+
+        <h3>列表渲染-数组</h3>
+        <div>
+            <div v-for="(item, index) in pageList" :key="index">
+                第{{ index + 1 }}个技术点,{{ item }}
+            </div>
+        </div>
+        <h3>列表渲染-对象</h3>
+        <div>
+            <div v-for="(item, key, index) in personalObj" :key="index">第{{ index + 1 }}个属性名：{{ key }}，值：{{ item }}
+            </div>
+        </div>
+        <h3>在 v-for 里使用范围值 </h3>
+        <span v-for="n in 10">{{ n }}</span>
+        <h3>template上的 v-for</h3>
+        <ul>
+            <template v-for="item in items">
+                <li>{{ item.msg }}</li>
+                <li class="divider" role="presentation"></li>
+            </template>
+        </ul>
 
         <h1>计算属性</h1>
         <div>
@@ -43,72 +69,58 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { reactive, ref, computed } from 'vue';
-export default {
-    name: 'basicsHome',
-    // `setup` 是一个特殊的钩子，专门用于组合式 API。
-    setup() {
-        const message = ref('');
+const message = ref('');
 
-        const count = ref(0);
+const count = ref(0);
 
-        let per = reactive({
-            firstName: "Nan",
-            lastName: "Chen",
-        });
-        per.fullName = computed(() => {
-            return per.firstName + "++" + per.lastName;
-        });
+const isShow = ref(true);
 
-        const handlePlus = () => {
-            count.value += 1;
-        }
+let per = reactive({
+    firstName: "Nan",
+    lastName: "Chen",
+});
+per.fullName = computed(() => {
+    return per.firstName + "++" + per.lastName;
+});
 
-        const handleSubtract = () => {
-            count.value -= 1;
-        }
+const handlePlus = () => {
+    count.value += 1;
+}
 
-        const handleZero = () => {
-            count.value = 0;
-        }
+const handleSubtract = () => {
+    count.value -= 1;
+}
 
-        const personalObj = reactive({
-            name: '张三',
-            age: 18,
-            sex: '男',
-        })
-        const handleClick = () => {
-            // console.log(personalObj.age);
-            personalObj.name = '李四';
-            personalObj.age = 21;
-        }
+const handleZero = () => {
+    count.value = 0;
+}
 
-
-
-        // 将 ref 暴露给模板
-        return {
-            count,
-            message,
-            personalObj,
-            per,
-
-            handlePlus,
-            handleSubtract,
-            handleZero,
-
-            handleClick,
-
-        }
-    }
+const personalObj = reactive({
+    name: '张三',
+    age: 18,
+    sex: '男',
+})
+const handleClick = () => {
+    // console.log(personalObj.age);
+    personalObj.name = '李四';
+    personalObj.age = 21;
 }
 
 
+// 
+const pageList = ref(['javaScript', 'html', 'css', 'vue', 'node']);
+
+
+const items = ref([
+    { msg: 'Foo' },
+    { msg: 'Bar' }
+]);
 
 </script>
 
 <style scoped>
-
 h1 {
     text-align: center;
 }
@@ -125,5 +137,11 @@ h1 {
 
 .count_sty_one {
     margin-right: 10px;
+}
+
+.main_sty {
+    padding: 10px;
+    border: 2px solid #ccc;
+    margin-top: 20px;
 }
 </style>

@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <router-view /> -->
     <RouterView></RouterView>
-   
+
   </div>
 
 </template>
@@ -10,7 +10,7 @@
 <script>
 // import { RouterView } from 'vue-router';
 export default {
-  name : 'app',   
+  name: 'app',
   data() {
     return {
 
@@ -21,9 +21,8 @@ export default {
 
 <style scoped>
 #app {
-  height: 100%;;
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
+  height: 100%;
+  margin: 10px;
+  /* border: 1px solid #ccc; */
 }
 </style>
