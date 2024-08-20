@@ -63,14 +63,43 @@
                 加起来：{{ per.fullName }}
             </div>
         </div>
-
-
-
     </div>
+
+    <div class="main_sty">
+        <h1>watch</h1>
+        <h2>基本示例</h2>
+        <el-button type="primary" @click="handleValChg">修改watchNumX</el-button>
+        <ul>
+            <li>watchNumX的初始值：{{ watchNumX }}</li>
+            <li>值变更说明：{{ watchNumMsg }}</li>
+        </ul>
+
+        <h2>监听单个ref的响应式数据</h2>
+        <el-button @click="handleNumOneChg" type="success">numOne加1</el-button>
+        <div>{{ numOne }}</div>
+
+        <h2>监听ref定义的多个响应式数据</h2>
+        <el-button @click="numTwo += '是个晴天，'" type="info">改变</el-button>
+        <div>{{ numTwo }}</div>
+
+        <h2>监听reactive所定义的一个响应式数据</h2>
+        <el-button @click="perAObj.name += 'a01'">改变名字</el-button>
+        <div>{{ perAObj.name }}</div>
+        <el-button @click="perAObj.age += 1">改变年龄</el-button>
+        <div>{{ perAObj.age }}</div>
+
+        <h2> watchEffect 监听器</h2>
+        <el-button @click="perBObj.name += 'hello'">改变名字</el-button>
+        <div>{{ perBObj.name }}</div>
+        <el-button @click="perBObj.age += 2">改变年龄</el-button>
+        <div>{{ perBObj.age }}</div>
+    </div>
+
+
 </template>
 
 <script setup>
-import { reactive, ref, computed } from 'vue';
+import { reactive, ref, computed, watch, watchEffect } from 'vue';
 const message = ref('');
 
 const count = ref(0);
@@ -117,6 +146,60 @@ const items = ref([
     { msg: 'Foo' },
     { msg: 'Bar' }
 ]);
+
+
+/**
+ * 监听器
+ */
+const watchNumX = ref(4);
+const watchNumMsg = ref('');
+
+const handleValChg = () => {
+    watchNumX.value = 0
+}
+
+watch(() => watchNumX.value, (newValue, oldValue) => {
+    watchNumMsg.value = `watchNumX的新值：${newValue}，watchNumX的旧值：${oldValue} `
+})
+
+// 例子1
+const numOne = ref(0);
+const numTwo = ref('今天是周三。');
+watch([numOne, numTwo], (newValue, oldValue) => {
+    console.log(`numOne and numTwo：${newValue}——————${oldValue}`);
+},
+    /* immediate：第一次就监听 */
+    { immediate: true }
+)
+
+const handleNumOneChg = () => {
+    numOne.value += 1;
+}
+
+let perAObj = reactive({
+    name: '王一',
+    age: 18,
+})
+
+watch(perAObj, (newValue, oldValue) => {
+    console.log(`新值：${newValue}，旧值：${oldValue} `);
+})
+
+watch(() => perAObj.name, (newValue, oldValue) => {
+    console.log(newValue, oldValue);
+}
+);
+
+let perBObj = reactive({
+    name: '王二',
+    age: 20,
+})
+
+watchEffect(() => {
+    console.log(`b对象：${perBObj.name}，${perBObj.age}`);
+})
+
+
 
 </script>
 
