@@ -42,10 +42,10 @@
             </div>
         </div>
         <h3>在 v-for 里使用范围值 </h3>
-        <span v-for="n in 10">{{ n }}</span>
+        <span v-for="n in 10" :key="n">{{ n }}</span>
         <h3>template上的 v-for</h3>
         <ul>
-            <template v-for="item in items">
+            <template v-for="item in items" :key="item">
                 <li>{{ item.msg }}</li>
                 <li class="divider" role="presentation"></li>
             </template>
