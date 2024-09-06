@@ -10,7 +10,7 @@ const routes = [
     {
         path: '/workBench', 
         // 路由懒加载
-        component: ()=>import('@/pages/workbench.vue'),
+        component: ()=>import('@/views/workbench.vue'),
     },
     ...Basics,
 ]

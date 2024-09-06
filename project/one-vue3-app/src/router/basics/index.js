@@ -7,7 +7,7 @@ export default [
         children:[
             { 
                 path: 'home', 
-                component: ()=>import('@/pages/basics/home.vue')
+                component: ()=>import('@/views/basics/home.vue')
              },
         ]
     },
