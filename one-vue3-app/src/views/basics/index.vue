@@ -14,11 +14,11 @@
 import { useRouter } from "vue-router";
 
 export default {
-  name: "index",
+  name: "basic-index",
   setup() {
     const router = useRouter();
 
-    const handleToNextPage = (val) => {
+    const handleToNextPage = () => {
       router.push("/basics/project");
     };
 

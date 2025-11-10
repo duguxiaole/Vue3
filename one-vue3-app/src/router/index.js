@@ -5,12 +5,12 @@ import Basics from './basics/index.js'
 const routes = [
   {
     path: '/',
-    redirect: '/workBench',
+    redirect: '/work-bench',
   },
   {
-    path: '/workBench',
+    path: '/work-bench',
     // 路由懒加载
-    component: () => import('@/views/workbench.vue'),
+    component: () => import('@/views/work-bench.vue'),
   },
   ...Basics,
 ]
